@@ -36,7 +36,7 @@ sbcl \
   --quit
 rm -rf ./tmp
 
-TMP_DIR=./tmp/a51repl
+TMP_DIR=./tmp/area51repl
 echo "Installing area51-repl and magic-ed"
 git clone https://github.com/spacejockeycl/area51-repl.git ${TMP_DIR}
 rm -rf ${TMP_DIR}/.git
@@ -44,7 +44,6 @@ mv ${TMP_DIR} ~/.quicklisp/local-projects
 rm -rf ./tmp
 
 echo ";;; Added by the Area51 installation script
-(ql:quickload :cl-repl)
-(ql:quickload :magic-ed)
-(cl-repl:main)
+(ql:quickload :area51-repl)
+(area51-repl:start)
 " >> ~/.sbclrc
