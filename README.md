@@ -3,7 +3,7 @@
 Common Lisp is a wonderfully powerful and pragmatic language with a long and
 rich history. I believe, for the new interested user, learning Emacs and Slime
 is a premature optimization. If a new user wishes to learn Common Lisp it 
-should only take a few actions to get from start to evaluation.
+should the fewest actions to get from  nil to eval.
 
 Area51's only aim is to provide that simplicity.
 
