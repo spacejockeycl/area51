@@ -7,4 +7,4 @@ brew uninstall sbcl
 rm ~/.sbclrc
 
 echo "Deleting Quicklisp"
-rm -r ~/.quicklisp
+rm -rf ~/.quicklisp

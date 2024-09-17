@@ -46,3 +46,11 @@ echo ";;; Added by the Area51 installation script
 (ql:quickload :area51-repl)
 (area51-repl:start)
 " >> ~/.sbclrc
+
+echo "
+====================================
+Type \"sbcl\" to finish installation.
+When installation completes, type \".help\" for help. 
+
+Thank you and Happy Lisping!
+===================================="
