@@ -1,33 +1,43 @@
-# area51
-Brand new Common Lisp user setup
+# Area51
 
-* Start with Mac OS
-* Installation of the following packages: SBCL, Quicklisp, Qlot, linedit
-* Add quicklisp and linedit to .sbclrc
-* Something to create project directory, use qlot inside that directory, write first file (maybe cl-project or quick-project)
-* Something to run repl in project directory and loading systems for that project (including refresh)
+Common Lisp is a wonderfully powerful and pragmatic language with a long and
+rich history. I believe, for the new interested user, learning Emacs and Slime
+is a premature optimization. If a new user wishes to learn Common Lisp it 
+should only take a few actions to get from start to evaluation.
+
+Area51's only aim is to provide that simplicity.
+
+Area51 is an installation script that provides an new Common Lisp user 
+with an implementation (SBCL), a package manager (Quicklisp) and an upgraded
+read-eval-print loop (REPL).
+
+## Installation (only Mac OS support)
 
 ```sh
-$ curl -o- https://area51.build/install.sh | bash
+$ curl -L https://raw.githubusercontent.com/spacejockeycl/area51/main/install.sh | bash
 ```
 
-## SBCL
+After installation you can start the REPL by executing:
+
 ```sh
-$ brew install sbcl
-```
-Error is no homebrew
-
-## Quicklisp
-```sh
-$ curl -o /tmp/ql.lisp http://beta.quicklisp.org/quicklisp.lisp
-$ sbcl --no-sysinit --no-userinit --load /tmp/ql.lisp \
-       --eval '(quicklisp-quickstart:install :path "~/.quicklisp")' \
-       --eval '(ql:add-to-init-file)' \
-       --quit
+$ sbcl
 ```
 
-## Qlot
-```sh
-$ curl -L https://qlot.tech/installer | sh
+The installation process will finish the first time you run `sbcl`. You can
+confirm this by observing all the text scrolling by. When the installation
+completes you will be provided the following prompt:
+
+```lisp
+CL-USER>
 ```
 
+Type `.clear` to clear the screen. Enter `.help` to get a list of commands you 
+can type in the REPL. The REPL also supports tab completion. Try this out by 
+typing:
+
+```lisp
+CL-USER> (for<tab><tab>
+```
+
+Where `<tab>` is the tab key. You should be provided a list of three options:
+`force-output`, `format` and `formatter`.
