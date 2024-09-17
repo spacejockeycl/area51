@@ -11,7 +11,7 @@ Area51 is an installation script that provides an new Common Lisp user
 with an implementation (SBCL), a package manager (Quicklisp) and an upgraded
 read-eval-print loop (REPL).
 
-## Installation (only Mac OS support)
+## Installation (only Mac OS supported)
 
 ```sh
 $ curl -L https://raw.githubusercontent.com/spacejockeycl/area51/main/install.sh | bash
