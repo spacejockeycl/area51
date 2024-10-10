@@ -36,10 +36,8 @@ sbcl \
 rm -rf ./tmp
 
 echo "Installing Packages"
-TMP_DIR=./tmp/area51-repl
-git clone https://github.com/spacejockeycl/area51-repl.git ${TMP_DIR}
-mv ${TMP_DIR} ~/.quicklisp/local-projects
-rm -rf ./tmp
+REPL_DIR=~/.quicklisp/local-projects/area51-repl
+git clone https://github.com/spacejockeycl/area51-repl.git $REPL_DIR
 
 echo "Adding Initialization"
 echo ";;; Added by the Area51 installation script
