@@ -12,10 +12,23 @@ function verify_commands_installed {
   done
 }
 
+function install_sbcl {
+  if ! brew ls --versions "sbcl" &> /dev/null; then
+    brew install sbcl
+  fi
+
+  if ! grep -q "Area51" "$HOME"/.zshrc; then
+    echo "
+# Added by the Area51 installation script'
+alias sbcl=\"sbcl --noinform\" ">> "$HOME"/.zshrc
+    source "$HOME"/.zshrc
+  fi
+}
+
 function update_quicklisp {
   sbcl \
     --noinform --noprint --no-sysinit --no-userinit --disable-debugger \
-    --load "$HOME/.quicklisp/setup.lisp" \
+    --load "$HOME"/.quicklisp/setup.lisp \
     --quit
 }
 
@@ -28,7 +41,7 @@ function install_quicklisp {
     --noinform --noprint --no-sysinit --no-userinit --disable-debugger \
     --load ./tmp/ql.lisp \
     --eval '(quicklisp-quickstart:install :path "~/.quicklisp")' \
-    --eval '(ql:add-to-init-file)' \
+    --eval '(ql-util:without-prompting (ql:add-to-init-file))' \
     --quit
   rm -rf ./tmp
 
@@ -37,10 +50,10 @@ function install_quicklisp {
   git clone https://github.com/spacejockeycl/area51-repl.git $REPL_DIR
 
   echo "Adding Initialization"
-  echo ";;; Added by the Area51 installation script
-  (ql:quickload :area51-repl)
-  (area51-repl:start)
-  " >> ~/.sbclrc
+  echo "
+;;; Added by the Area51 installation script
+(ql:quickload :area51-repl :silent t)
+(area51-repl:start)" >> "$HOME"/.sbclrc
 }
 
 brew update
@@ -51,9 +64,7 @@ if ! brew ls --versions "readline" &> /dev/null; then
 fi
 
 echo "Installing Common Lisp (SBCL)"
-if ! brew ls --versions "sbcl" &> /dev/null; then
-  brew install sbcl
-fi
+install_sbcl
 
 if [ ! -d "$HOME/.quicklisp" ]; then
   echo "Installing Package Manager (Quicklisp)"
@@ -64,10 +75,15 @@ else
 fi
 
 echo "
-=====================================================
-Type \"sbcl\" to finish installation.
-When installation completes, type \".help\" for help. 
+===========================================================
+\"You unlock this door with the key of imagination. Beyond 
+it is another dimension - a dimension of sound, a dimension
+of sight, a dimension of mind. You're moving into a land 
+of both shadow and substance, of things and ideas. You've 
+just crossed over into the Twilight Zone.\"
+    - Rod Serling
 
-Thank you and Happy Lisping!
-=====================================================
+Type \"sbcl\" to finish installation.
+Type \".clear\" to clear the screen and \".help\" for help. 
+===========================================================
 "
