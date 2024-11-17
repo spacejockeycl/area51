@@ -27,7 +27,7 @@ function install_sbcl {
   if ! grep -q "Area51" "$HOME"/.zshrc; then
     echo "
 # Added by the Area51 installation script'
-alias sbcl=\"sbcl --noinform\" ">> "$HOME"/.zshrc
+alias area51=\"sbcl --noinform\" ">> "$HOME"/.zshrc
     source "$HOME"/.zshrc
   fi
 }
@@ -92,7 +92,7 @@ of both shadow and substance, of things and ideas. You've
 just crossed over into the Twilight Zone.\"
     - Rod Serling
 
-Type \"sbcl\" to finish installation.
+Type \"area51\" to finish installation.
 Type \".clear\" to clear the screen and \".help\" for help. 
 ===========================================================
 "
