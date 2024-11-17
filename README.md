@@ -22,7 +22,7 @@ curl -L https://raw.githubusercontent.com/spacejockeycl/area51/main/install.sh |
 After installation you can start the REPL by executing:
 
 ```sh
-$ sbcl
+$ area51
 ```
 
 The installation process will finish the first time you run `sbcl`. You can
