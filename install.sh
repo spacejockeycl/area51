@@ -2,6 +2,13 @@
 
 set -euf
 
+function verify_macos {
+  if [ "$(uname)" != "Darwin" ]; then
+    echo "Only MacOS is currently suppored."
+    exit 1
+  fi
+}
+
 function verify_commands_installed {
   required_commands=("brew" "curl" "git")
   for cmd in "${required_commands[@]}"; do
@@ -56,6 +63,8 @@ function install_quicklisp {
 (area51-repl:start)" >> "$HOME"/.sbclrc
 }
 
+verify_macos
+verify_commands_installed
 brew update
 
 echo "Installing Dependencies"

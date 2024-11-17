@@ -11,7 +11,7 @@ should take the fewest actions to get from nil to eval**.
 Area51's only aim is to provide that simplicity. How we do we measure whether
 we have achieved our aim? By successfully completing [Practical Common Lisp](https://gigamonkeys.com/book/) without leaving the REPL.
 
-## Installation (only Mac OS supported)
+## Installation (only Mac OS currently supported)
 
 ```sh
 curl -L https://raw.githubusercontent.com/spacejockeycl/area51/main/install.sh | bash
