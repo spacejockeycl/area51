@@ -77,8 +77,8 @@ else
 fi
 
 echo "
-Create an alias in your shell's config. For example. in ZSH:
-echo "alias area51=\"sbcl --no-inform \"" >> ~/.zshrc
+Create an alias in your shell's config. For example, in ZSH:
+echo 'alias area51=\"sbcl --no-inform\"' >> ~/.zshrc
 
 ============================================================
 \"You unlock this door with the key of imagination. Beyond 
