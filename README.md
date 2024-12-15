@@ -11,7 +11,7 @@ should take the fewest actions to get from nil to eval**.
 Area51's only aim is to provide that simplicity. How we do we measure whether
 we have achieved our aim? By successfully completing [Practical Common Lisp](https://gigamonkeys.com/book/) without leaving the REPL.
 
-[![asciicast](https://asciinema.org/a/DGrfeKAkuQReE7a1HL6fVMCfC.svg)](https://asciinema.org/a/DGrfeKAkuQReE7a1HL6fVMCfC)
+> The REPL is a fork of [fstamour/cl-repl](https://github.com/fstamour/cl-repl), which is a fork of [koji-kojiro/cl-repl](https://github.com/koji-kojiro/cl-repl)
 
 ## Installation (only Mac OS currently supported)
 
