@@ -47,7 +47,7 @@ function install_quicklisp {
 
   echo "Installing Packages"
   REPL_DIR=~/common-lisp/area51
-  git clone https://github.com/spacejockeycl/area51.git $REPL_DIR
+  git clone git@github.com:spacejockeycl/area51.git $REPL_DIR
 
   echo "Adding Initialization"
   echo "
