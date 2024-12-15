@@ -22,7 +22,7 @@ curl -L https://raw.githubusercontent.com/spacejockeycl/area51/main/install.sh |
 After installation add an alias in your shell's config. For example if your shell is ZSH:
 
 ```sh
-$ echo "alias area51=\"sbcl --no-inform\"" >> ~/.zshrc
+$ echo 'alias area51="sbcl --no-inform"' >> ~/.zshrc
 ```
 
 Don't forget to `source` the file after adding the alias.
