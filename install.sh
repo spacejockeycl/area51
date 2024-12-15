@@ -23,19 +23,12 @@ function install_sbcl {
   if ! brew ls --versions "sbcl" &> /dev/null; then
     brew install sbcl
   fi
-
-  if ! grep -q "Area51" "$HOME"/.zshrc; then
-    echo "
-# Added by the Area51 installation script'
-alias area51=\"sbcl --noinform\" ">> "$HOME"/.zshrc
-    source "$HOME"/.zshrc
-  fi
 }
 
 function update_quicklisp {
   sbcl \
     --noinform --noprint --no-sysinit --no-userinit --disable-debugger \
-    --load "$HOME"/.quicklisp/setup.lisp \
+    --load "$HOME"/quicklisp/setup.lisp \
     --quit
 }
 
@@ -47,20 +40,20 @@ function install_quicklisp {
   sbcl \
     --noinform --noprint --no-sysinit --no-userinit --disable-debugger \
     --load ./tmp/ql.lisp \
-    --eval '(quicklisp-quickstart:install :path "~/.quicklisp")' \
+    --eval '(quicklisp-quickstart:install)' \
     --eval '(ql-util:without-prompting (ql:add-to-init-file))' \
     --quit
   rm -rf ./tmp
 
   echo "Installing Packages"
-  REPL_DIR=~/.quicklisp/local-projects/area51-repl
-  git clone https://github.com/spacejockeycl/area51-repl.git $REPL_DIR
+  REPL_DIR=~/common-lisp/area51
+  git clone https://github.com/spacejockeycl/area51.git $REPL_DIR
 
   echo "Adding Initialization"
   echo "
 ;;; Added by the Area51 installation script
-(ql:quickload :area51-repl :silent t)
-(area51-repl:start)" >> "$HOME"/.sbclrc
+(ql:quickload :area51 :silent t)
+(area51:start)" >> "$HOME"/.sbclrc
 }
 
 verify_macos
@@ -75,7 +68,7 @@ fi
 echo "Installing Common Lisp (SBCL)"
 install_sbcl
 
-if [ ! -d "$HOME/.quicklisp" ]; then
+if [ ! -d "$HOME/quicklisp" ]; then
   echo "Installing Package Manager (Quicklisp)"
   install_quicklisp
 else
@@ -92,7 +85,10 @@ of both shadow and substance, of things and ideas. You've
 just crossed over into the Twilight Zone.\"
     - Rod Serling
 
-Type \"area51\" to finish installation.
+Add the an alias to your shell's config. For example:
+echo "alias area51=\"sbcl --no-inform\"">> ~/.zshrc 
+
+Type \"area51\" to finish the installation.
 Type \".clear\" to clear the screen and \".help\" for help. 
 ===========================================================
 "
